@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sanitize Decoder</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        color: white;
+      }
+      textarea,
+      p {
+        font-size: 20px;
+      }
+      .app_Container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: #262833;
+        height: 100vh;
+      }
+      input[type="submit"],
+      button {
+        background-color: #4acfac;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        color: white;
+        padding: 1em;
+        cursor: pointer;
+        color: rgb(44, 43, 43);
+        font-weight: 600;
+      }
+      textarea {
+        background-color: #333644;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        outline: none;
+        padding: 5px;
+      }
+      form {
+        margin: 10px;
+        line-height: 3em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app_Container">
+      <form action="/ttc" id="TextToCodeForm" method="POST">
+        <h1>Text To Code</h1>
+        <div>
+          <textarea
+            name="textToCode"
+            id="ttc"
+            cols="50"
+            rows="10"
+            placeholder="noob..."
+          ></textarea>
+        </div>
+        <p style="max-width: 550px; word-wrap: break-word;"><%= ctVal %></p>
+        <input type="submit" value="Change" />
+      </form>
+      <form action="/ctt" id="CodeToTextForm" method="POST">
+        <h1>Code To Text</h1>
+        <div>
+          <textarea
+            name="codeToText"
+            id="ctt"
+            cols="50"
+            rows="10"
+            placeholder="#&kf8%..."
+          ></textarea>
+        </div>
+        <p><%= cdVal %></p>
+        <input type="submit" value="Change" />
+      </form>
+    </div>
+    <script>
+      function copyCode() {
+        var copyText = document.getElementById("ctt");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+      }
+      function copyText() {
+        var copyText = document.getElementById("ttc");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+      }
+    </script>
+  </body>
+</html>
